@@ -15,6 +15,7 @@ namespace Crawled
 
 
         Character cha;
+        Map map;
 
         public Game1()
         {
@@ -32,6 +33,7 @@ namespace Crawled
         {
             // TODO: Add your initialization logic here
             cha = new Character();
+            map = new Map();
 
             base.Initialize();
         }
@@ -47,6 +49,7 @@ namespace Crawled
 
             // TODO: use this.Content to load your game content here
             cha.Initialize(this.Content.Load<Texture2D>("acolyte"), new Vector2(20, 20));
+            map.Initialize(this.Content.Load<Texture2D>("Ground/0"), 5, 4);
         }
 
         /// <summary>
@@ -86,6 +89,7 @@ namespace Crawled
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            map.Draw(spriteBatch);
             cha.Draw(spriteBatch);
 
             spriteBatch.End();
