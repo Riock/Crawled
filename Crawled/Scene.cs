@@ -5,6 +5,12 @@ using Crawled.Logic.Models;
 
 namespace Crawled
 {
+    enum GameState
+    {
+        GamePlay, Menu
+    }
+
+
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -17,6 +23,10 @@ namespace Crawled
         Character cha;
         Map map;
         Camera2D camera;
+
+        int count;
+
+        bool manualMove = false;
 
         public Scene()
         {
@@ -35,8 +45,10 @@ namespace Crawled
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
             graphics.ToggleFullScreen();
+            
 
             camera = new Camera2D();
+            count = 0;
 
             base.Initialize();
         }
@@ -74,7 +86,23 @@ namespace Crawled
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            count++;
+            if (Keyboard.GetState().IsKeyDown(Keys.F5) && count > 20)
+            {
+                //does not toggle properly
+                manualMove = !manualMove;
+                count = 0;
+            }
             // TODO: Add your update logic here
+
+            #region debug
+
+            if (manualMove)
+            {
+                cha.ManualMove(Keyboard.GetState());
+            }
+
+            #endregion
 
             cha.Update();
 
