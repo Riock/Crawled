@@ -16,6 +16,7 @@ namespace Crawled
 
         Character cha;
         Map map;
+        Camera2D camera;
 
         public Scene()
         {
@@ -34,6 +35,8 @@ namespace Crawled
             // TODO: Add your initialization logic here
             this.IsMouseVisible = true;
             graphics.ToggleFullScreen();
+
+            camera = new Camera2D();
 
             base.Initialize();
         }
@@ -87,7 +90,8 @@ namespace Crawled
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null,
+                camera.GetTransformation(GraphicsDevice));
 
             map.Draw(spriteBatch);
             cha.Draw(spriteBatch);
