@@ -8,7 +8,7 @@ namespace Crawled
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class Scene : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -17,11 +17,10 @@ namespace Crawled
         Character cha;
         Map map;
 
-        public Game1()
+        public Scene()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            graphics.ToggleFullScreen();
         }
 
         /// <summary>
@@ -33,8 +32,8 @@ namespace Crawled
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            cha = new Character();
-            map = new Map();
+            this.IsMouseVisible = true;
+            graphics.ToggleFullScreen();
 
             base.Initialize();
         }
@@ -49,8 +48,8 @@ namespace Crawled
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            cha.Initialize(this.Content.Load<Texture2D>("acolyte"), new Vector2(20, 20));
-            map.Initialize(this.Content.Load<Texture2D>("Ground/0"), 5, 4);
+            cha = new Character(this.Content.Load<Texture2D>("acolyte"), new Vector2(20, 20));
+            map = new Map(this.Content.Load<Texture2D>("Ground/0"), 10, 10);
         }
 
         /// <summary>
@@ -69,7 +68,7 @@ namespace Crawled
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Add your update logic here

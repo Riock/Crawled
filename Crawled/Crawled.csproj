@@ -38,7 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Logic\Models\Camera2D.cs" />
+    <Compile Include="Scene.cs" />
     <Compile Include="Logic\Models\Button.cs" />
     <Compile Include="Logic\Models\Character.cs" />
     <Compile Include="Logic\Models\Map.cs" />

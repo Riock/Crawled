@@ -11,7 +11,7 @@ namespace Crawled.Logic.Models
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public void Initialize(Texture2D texture, int width, int height)
+        public Map(Texture2D texture, int width, int height)
         {
             this.GroundTexture = texture;
             this.Width = width * texture.Width;

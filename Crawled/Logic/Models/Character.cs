@@ -15,7 +15,7 @@ namespace Crawled.Logic.Models
 
         #endregion
 
-        public void Initialize(Texture2D texture, Vector2 position)
+        public Character(Texture2D texture, Vector2 position)
         {
             this.Texture = texture;
             this.Position = position;
